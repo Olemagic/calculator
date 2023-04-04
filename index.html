@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Calculator</title>
-    <link rel="stylesheet" href="stylesheet.css">
+    <link rel="stylesheet" href="style.css">
     <script src="calculator.js"></script>
 </head>
 
@@ -11,38 +11,38 @@
     <h1>Calculator by Olemagic</h1>
     <div id="calculator">
         <div id="display">
-            <input type="text" id="displayInput" value="0" disabled>
+            <input type="text" id="displayInput" disabled>
         </div>
         <div id="buttons">
-            <button onclick="test()">%</button>
-            <button onclick="test()">CE</button>
-            <button onclick="test()">C</button>
-            <button class="backbutton" onclick="test()">⌫</button>
+            <button onclick="percent()">%</button>
+            <button onclick="clearNumber()">CE</button>
+            <button onclick="clearInput()">C</button>
+            <button class="backbutton" onclick="backspace()">⌫</button>
             <br>
-            <button onclick="test()">1/x</button>
-            <button onclick="test()">x²</button>
-            <button onclick="test()">√x</button>
-            <button onclick="test()">÷</button>
+            <button onclick="reciprocal()">1/x</button>
+            <button onclick="square()">x²</button>
+            <button onclick="squareRoot()">√x</button>
+            <button onclick="divide()">÷</button>
             <br>
-            <button onclick="test()">7</button>
-            <button onclick="test()">8</button>
-            <button onclick="test()">9</button>
-            <button onclick="test()">×</button>
+            <button onclick="addNumber(7)">7</button>
+            <button onclick="addNumber(8)">8</button>
+            <button onclick="addNumber(9)">9</button>
+            <button onclick="multiply()">×</button>
             <br>
-            <button onclick="test()">4</button>
-            <button onclick="test()">5</button>
-            <button onclick="test()">6</button>
-            <button onclick="test()">-</button>
+            <button onclick="addNumber(4)">4</button>
+            <button onclick="addNumber(5)">5</button>
+            <button onclick="addNumber(6)">6</button>
+            <button onclick="subtract()">-</button>
             <br>
-            <button onclick="test()">1</button>
-            <button onclick="test()">2</button>
-            <button onclick="test()">3</button>
-            <button onclick="test()">+</button>
+            <button onclick="addNumber(1)">1</button>
+            <button onclick="addNumber(2)">2</button>
+            <button onclick="addNumber(3)">3</button>
+            <button onclick="add()">+</button>
             <br>
-            <button onclick="test()">+/-</button>
-            <button onclick="test()">0</button>
-            <button onclick="test()">,</button>
-            <button onclick="test()">=</button>
+            <button onclick="changeSign()">+/-</button>
+            <button onclick="addNumber(0)">0</button>
+            <button onclick="addDecimal()">,</button>
+            <button onclick="equals()">=</button>
 
         </div>
     </div>
