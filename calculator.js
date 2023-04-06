@@ -1,4 +1,4 @@
-const regex = /[^0-9.+\-*/]/g;
+const regex = /[+\-*/]/;
 let input = "";
 
 function addNumber(number) {
@@ -41,7 +41,7 @@ function add() {
     else if (isNaN(parseInt(input.slice(-1))) && input.slice(-1) !== ".") {
         input = input.slice(0, -1);
     }
-    else if (!regex.test(input)) input = eval(input);
+    else if (regex.test(input)) input = eval(input);
 
     input += "+";
     document.getElementById("displayInput").value = input;
@@ -54,7 +54,7 @@ function subtract() {
     else if (isNaN(parseInt(input.slice(-1))) && input.slice(-1) !== ".") {
         input = input.slice(0, -1);
     }
-    else if (!regex.test(input)) input = eval(input);
+    else if (regex.test(input)) input = eval(input);
 
     input += "-";
     document.getElementById("displayInput").value = input;
@@ -67,7 +67,7 @@ function multiply() {
     else if (isNaN(parseInt(input.slice(-1))) && input.slice(-1) !== ".") {
         input = input.slice(0, -1);
     }
-    else if (!regex.test(input)) input = eval(input);
+    else if (regex.test(input)) input = eval(input);
 
     input += "*";
     document.getElementById("displayInput").value = input;
@@ -80,7 +80,7 @@ function divide() {
     else if (isNaN(parseInt(input.slice(-1))) && input.slice(-1) !== ".") {
         input = input.slice(0, -1);
     }
-    else if (!regex.test(input)) input = eval(input);
+    else if (regex.test(input)) input = eval(input);
 
     input += "/";
     document.getElementById("displayInput").value = input;
@@ -115,17 +115,32 @@ if (input !== "") {
 }
 
 function changeSign() {
-    if (input === "") input = "-";
-    else if (input === "-") input = "";
+    if (!regex.test(input)) {
+        input = "-" + input;
+    }
     else {
-
+        //find the index of the last operator
+        for (let i = input.length - 1; i >= 0; i--) {
+            if (isNaN(parseInt(input[i])) && input[i] !== ".") {
+                if (input[i] === "-") {
+                    if (isNaN(parseInt(input[i - 1]))) {
+                        input = input.slice(0, i) + input.slice(i + 1);
+                    } else {
+                        input = input.slice(0, i + 1) + "-" + input.slice(i + 1);
+                    }
+                } else {
+                    input = input.slice(0, i + 1) + "-" + input.slice(i + 1);
+                }
+                break;
+            }
+        }
     }
     document.getElementById("displayInput").value = input;
 }
 
 function equals() {
     if (input !== "") {
-        input = eval(input);
+        input = eval(input).toString();
         document.getElementById("displayInput").value = input;
     }
 }
