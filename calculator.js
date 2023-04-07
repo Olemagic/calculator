@@ -123,9 +123,13 @@ function changeSign() {
         for (let i = input.length - 1; i >= 0; i--) {
             if (isNaN(parseInt(input[i])) && input[i] !== ".") {
                 if (input[i] === "-") {
-                    if (isNaN(parseInt(input[i - 1]))) {
+                    if (isNaN(parseInt(input[i - 1])) && input[i - 1] !== ".") {
                         input = input.slice(0, i) + input.slice(i + 1);
-                    } else {
+                    }
+                    else if (input[i - 1] === ".") {
+                        input = input.slice(0, i + 1) + "-" + input.slice(i + 1);
+                    }
+                    else {
                         input = input.slice(0, i + 1) + "-" + input.slice(i + 1);
                     }
                 } else {
